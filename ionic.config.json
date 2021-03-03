@@ -1,0 +1,7 @@
+{
+  "name": "FileRouge_Ionic",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
