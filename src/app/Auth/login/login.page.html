@@ -1,0 +1,67 @@
+<ion-content color="light" padding>
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <ion-grid>
+      <ion-row color="primary" justify-content-center>
+        <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+          <div  class="img-container">
+          <ion-card>
+            <ion-card-header>
+              <img src="./.././../assets/images/MoneySA.jpeg" alt="">
+            </ion-card-header>
+              <ion-text color="secondary">
+              <ion-card>
+                <h1>Login</h1>
+              <div class="inner"></div>
+              </ion-card>
+            </ion-text>
+          </ion-card>
+        </div>
+
+        <ion-card-header>
+          <div class="card2" padding>
+            <ion-list>
+
+              <ion-item>
+                <ion-label position="floating">Username</ion-label>
+                <ion-input formControlName="username" type="text" [ngClass]="{ 'is-invalid': submitted && f.username.errors }"></ion-input>
+              </ion-item>
+
+                <ng-container *ngFor="let validation of validation_messages.username">
+                  <div class="error-message errorMessage" color="danger" *ngIf="loginForm.get('username').hasError((validation.type)) && (loginForm.get('username').dirty || loginForm.get('username').touched)">
+                    {{ validation.message }}
+                  </div>
+                </ng-container>
+
+              <div class="Eyes">
+                <ion-item *ngIf="showpassword">
+                  <ion-label position="floating">Password</ion-label>
+                  <ion-icon slot="end" color="danger" name="eye" (click)="togglePasswordText()" ></ion-icon>
+                  <ion-input formControlName="password" type="text" class="pass" ></ion-input>
+                </ion-item>
+
+                <ion-item *ngIf="!showpassword">
+                  <ion-label  position="floating" color="primary">Password</ion-label>
+                  <ion-input type="password" formControlName="password" class="form-controll pass" ></ion-input>
+                  <ion-icon slot="end" color="medium" name="eye-off" (click)="togglePasswordText()"></ion-icon>
+                </ion-item>
+              </div>
+                  <ng-container *ngFor="let validation of validation_messages.password">
+                    <div class="error-message errorMessage" color="danger" *ngIf="loginForm.get('password').hasError(validation.type) && (loginForm.get('password').dirty || loginForm.get('password').touched)">
+                      {{ validation.message }}
+                    </div>
+                  </ng-container>
+            </ion-list>
+
+          </div>
+        </ion-card-header>
+        <ion-col>
+          <ion-router-link color="secondary" href="#">Mot de passe oublié ?</ion-router-link>
+        </ion-col>
+        <div class="login">
+          <button ion-button round  type="submit">Login</button>
+        </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

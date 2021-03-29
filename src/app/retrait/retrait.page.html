@@ -1,0 +1,128 @@
+
+
+
+<ion-content class="no-scroll">
+  <div class="head">
+    <ion-text color="secondary">
+      <ion-card>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-card-header>
+                <img src="./.././../assets/images/MoneySA.jpeg" alt="">
+              </ion-card-header>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        <ion-item>
+          <ion-icon color="danger" name="return-up-back-outline"></ion-icon>
+          <ion-label>Retrait</ion-label>
+        </ion-item>
+        <div class="inner"></div>
+      </ion-card>
+    </ion-text>
+  </div>
+
+  <ion-item>
+    <ion-label position="floating">Code</ion-label>
+    <ion-input formControlName="codeTransaction" (focus)="getTransaction()"></ion-input>
+    <small class="danger" *ngIf="submitted==true && f.codeTransaction.hasError('required')">
+      <i>le Code de transaction est obligatoire</i>
+    </small>
+  </ion-item>
+
+  <div class="segmentation">
+    <ion-card>
+      <ion-toolbar>
+        <ion-segment (ionChange)="segmentChanged($event)" [value]="selecTabs">
+          <ion-segment-button value="beneficiaire">
+            <ion-label>Bénéficiaire</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="emetteur">
+            <ion-label>Emetteur</ion-label>
+          </ion-segment-button>
+        </ion-segment>
+      </ion-toolbar>
+    </ion-card>
+  </div>
+
+  <form [formGroup]="retraitForm" (ngSubmit)="retraitTransaction()">
+
+    <div *ngIf="selecTabs === 'beneficiaire' "  class="emetteurs">
+      <ion-item>
+        <ion-label position="stacked">N NCI</ion-label>
+        <ion-input formControlName="cni"></ion-input>
+        <small class="danger" *ngIf="(submitted==true && f.cni.hasError('required')) || (f.cni.touched && f.cni.hasError('required'))">
+          <i>le numéro CNI est obligatoire</i>
+        </small>
+        <small class="danger" *ngIf="(submitted==true && f.cni.hasError('pattern')) ||
+              (f.cni.touched && f.cni.hasError('pattern'))">
+          <i>le numéro CNI doit avoir 13 chiffres</i>
+        </small>
+      </ion-item>
+      <!--<ng-container *ngFor="let validation of validation_messages.nci">
+        <div class="error-message errorMessage" color="danger" *ngIf="retraitForm.get('nci').hasError((validation.type)) && (retraitForm.get('nci').dirty || retraitForm.get('nci').touched)">
+          {{ validation.message }}
+        </div>
+      </ng-container>-->
+
+      <ion-item lines="none">
+        <ion-label position="stacked">NOM & PRENOM</ion-label>
+        <b></b>
+      </ion-item>
+
+      <ion-item lines="none">
+        <ion-label position="stacked">MONTANT À RECEVOIR</ion-label>
+        <b></b>
+      </ion-item>
+
+      <ion-item lines="none">
+        <ion-label position="stacked">TELEPHONE</ion-label>
+        <b></b>
+      </ion-item>
+
+      <ion-item lines="none">
+        <ion-label position="stacked">DATE D'ENVOI</ion-label>
+        <b></b>
+      </ion-item>
+
+      <div class="suivants">
+        <button ion-button round (click)="OnRetirer()" >Retirer</button>
+      </div>
+
+    </div>
+
+    <div *ngIf="selecTabs === 'emetteur' " class="benefice" >
+
+      <ion-item>
+        <ion-label position="stacked">N NCI</ion-label>
+        <ion-input ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">NOM & PRENOM</ion-label>
+        <ion-input ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">MONTANT À RECEVOIR</ion-label>
+        <ion-input ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">TELEPHONE</ion-label>
+        <ion-input ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">DATE D'ENVOI</ion-label>
+        <ion-input type="number" ></ion-input>
+      </ion-item>
+
+      <div class="suivants">
+        <button ion-button round  type="submit" >Retirer</button>
+      </div>
+
+    </div>
+  </form>
+</ion-content>

@@ -1,0 +1,23 @@
+
+.img-container {
+    width: 100%;
+}
+
+ion-card {
+    text-align: center;
+    // background: transparent;
+    // box-shadow: none;
+    img {
+      width: 290px;
+      height: 250px;
+      border: none;
+      -moz-border-radius : 5px;
+      -webkit-border-radius: 5px;
+      border-radius: 5px;
+    }
+    // ion-card-tittle {
+    //   font-size: 20px;
+    //   color: #D2EDDD;
+    //   font-weight: 400; 
+    // }
+  }

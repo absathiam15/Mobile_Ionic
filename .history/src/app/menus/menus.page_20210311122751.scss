@@ -1,0 +1,17 @@
+ion-card {
+    background: lime;
+    text-align: center;
+    border-radius: 0;
+    height: 370px;
+    margin-top: 70%;
+    box-shadow: none;
+    ion-item {
+        ion-icon {
+            color: red;
+            display: inline-block ;
+            margin-right: 5%;
+            height: 20px;
+            width: 10%;
+        }
+    }
+  }

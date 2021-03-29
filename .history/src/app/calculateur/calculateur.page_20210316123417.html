@@ -1,0 +1,73 @@
+
+<ion-content>
+  <div class="head">
+    
+    <ion-text color="secondary">
+    <ion-card>
+      <ion-card-header>
+        <img src="./.././../assets/images/MoneySA.jpeg" alt="">
+      </ion-card-header> 
+      <ion-item>
+        <ion-icon color="danger" name="return-up-forward-outline"></ion-icon>      
+        <ion-label>Dépôt</ion-label>
+      </ion-item>
+    <div class="inner"></div>
+    </ion-card>
+  </ion-text>
+</div>
+
+
+
+  <div *ngIf="selecTabs == 'emetteur'" class="emett">
+   <form>
+     <div class="emetteurs">
+       <ion-item>
+         <ion-label position="stacked">N NCI</ion-label>
+         <ion-input ></ion-input> 
+         <div class="innerss"></div>
+       </ion-item>     
+       <ion-item>
+         <ion-label position="stacked">Nom</ion-label>
+         <ion-input ></ion-input> 
+         <div class="innerss"></div>
+       </ion-item> 
+       <ion-item>
+         <ion-label position="stacked">Prenom</ion-label>
+         <ion-input ></ion-input> 
+         <div class="innerss"></div>
+       </ion-item> 
+       <ion-item>
+         <ion-label position="stacked">Telephone</ion-label>
+         <ion-input ></ion-input> 
+         <div class="innerss"></div>
+       </ion-item> 
+       <ion-item>
+         <ion-label position="stacked">Montant</ion-label>
+         <ion-input ></ion-input> 
+         <div class="innerss"></div>
+       </ion-item> 
+       <div class="fraiss">
+         <ion-item>
+           <ion-label position="stacked">Frais</ion-label>
+           <ion-input ></ion-input> 
+           <div class="innerss"></div>
+         </ion-item> 
+       </div>
+       <ion-item>
+         <ion-label position="stacked">Total</ion-label>
+         <ion-input ></ion-input> 
+         <div class="innerss"></div>
+       </ion-item> 
+     </div>
+     <div class="suivant">
+       <ion-button routerLink="" type="submit"  expand="block">Suivant</ion-button>
+     </div>
+   </form>
+  </div>
+
+  <div class="benefice" *ngIf="selecTabs == 'beneficiaire'">
+  
+ </div>
+   
+</div>
+</ion-content>

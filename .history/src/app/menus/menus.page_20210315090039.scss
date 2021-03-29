@@ -1,0 +1,25 @@
+ion-content {
+    background: lime;
+    text-align: center;
+    border-radius: 0;
+    margin-top: 5%;
+    box-shadow: none;
+    ion-list {
+        width: 100%;
+        margin-left: 5%;
+        ion-label {
+        }
+        ion-icon {
+            color: red;
+            display: inline-block ;
+            margin-top: 5%;
+            height: 20px;
+            width: 10%;
+        }
+    }
+  }
+
+ionic-header {
+    margin-top: 2%;
+    background: #000;
+}

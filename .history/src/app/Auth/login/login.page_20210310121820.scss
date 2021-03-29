@@ -1,0 +1,21 @@
+
+.img-container {
+    width: 100%;
+}
+
+ion-card {
+    text-align: center;
+    background: transparent;
+    box-shadow: none;
+    img {
+      
+      border: none;
+      
+      border-radius: 50px;
+    }
+    ion-card-tittle {
+      font-size: 20px;
+      color: #D2EDDD;
+      font-weight: 400; 
+    }
+  }

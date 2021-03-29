@@ -1,0 +1,143 @@
+
+
+
+<ion-content class="no-scroll">
+ <div class="head">
+
+      <ion-text color="secondary">
+      <ion-card>
+        <ion-card-header>
+          <img src="./.././../assets/images/MoneySA.jpeg" alt="">
+        </ion-card-header>
+        <ion-item>
+          <ion-icon color="danger" name="return-up-forward-outline"></ion-icon>
+          <ion-label>Dépôt</ion-label>
+        </ion-item>
+      <div class="inner"></div>
+      </ion-card>
+    </ion-text>
+ </div>
+
+ <div class="segmentation">
+   <ion-card>
+    <ion-toolbar>
+      <ion-segment (ionChange)="segmentChanged($event)" [value]="selecTabs">
+        <ion-segment-button value="emetteur">
+          <ion-label>Emetteur</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="beneficiaire">
+          <ion-label>Bénéficiaire</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+    </ion-toolbar>
+   </ion-card>
+ </div>
+
+    <form [formGroup]="depotForm" (ngSubmit)="depotTransaction()">
+
+      <div *ngIf="selecTabs === 'emetteur' "  class="emetteurs">
+        <ion-item>
+          <ion-label position="stacked">N NCI</ion-label>
+          <ion-input formControlName="nci"></ion-input>
+        </ion-item>
+        <ng-container *ngFor="let validation of validation_messages.nci">
+          <div class="error-message errorMessage" color="danger" *ngIf="depotForm.get('nci').hasError((validation.type)) && (depotForm.get('nci').dirty || depotForm.get('nci').touched)">
+            {{ validation.message }}
+          </div>
+        </ng-container>
+
+        <ion-item>
+          <ion-label position="stacked">Nom</ion-label>
+          <ion-input formControlName="nom"></ion-input>
+        </ion-item>
+        <ng-container *ngFor="let validation of validation_messages.nom">
+          <div class="error-message errorMessage" color="danger" *ngIf="depotForm.get('nom').hasError((validation.type)) && (depotForm.get('nom').dirty || depotForm.get('nom').touched)">
+            {{ validation.message }}
+          </div>
+        </ng-container>
+
+        <ion-item>
+          <ion-label position="stacked">Prenom</ion-label>
+          <ion-input formControlName="prenom"></ion-input>
+        </ion-item>
+        <ng-container *ngFor="let validation of validation_messages.prenom">
+          <div class="error-message errorMessage"  color="danger" *ngIf="depotForm.get('prenom').hasError((validation.type)) && (depotForm.get('prenom').dirty || depotForm.get('prenom').touched)">
+            {{ validation.message }}
+          </div>
+        </ng-container>
+
+        <ion-item>
+          <ion-label position="stacked">Telephone</ion-label>
+          <ion-input formControlName="telephone"></ion-input>
+        </ion-item>
+        <ng-container *ngFor="let validation of validation_messages.telephone">
+          <div class="error-message errorMessage" color="danger" *ngIf="depotForm.get('telephone').hasError((validation.type)) && (depotForm.get('telephone').dirty || depotForm.get('telephone').touched)">
+            {{ validation.message }}
+          </div>
+        </ng-container>
+
+        <ion-item>
+          <ion-label position="stacked">Montant</ion-label>
+          <ion-input formControlName="montant" (keyup)="onCalculateFrais($event)" ></ion-input>
+        </ion-item>
+        <ng-container *ngFor="let validation of validation_messages.montant">
+          <div class="error-message errorMessage" color="danger" *ngIf="depotForm.get('montant').hasError((validation.type)) && (depotForm.get('montant').dirty || depotForm.get('montant').touched)">
+            {{ validation.message }}
+          </div>
+        </ng-container>
+        <div class="fraiss">
+          <ion-item>
+            <ion-label position="stacked">Frais</ion-label>
+            <ion-input readonly [value]="frais"></ion-input>
+          </ion-item>
+        </div>
+        <ion-item>
+          <ion-label position="stacked">Total</ion-label>
+          <ion-input readonly [value]="total"></ion-input>
+        </ion-item>
+
+        <div class="suivants">
+          <button ion-button round (click)="OnSuivant()" >Suivant</button>
+        </div>
+
+      </div>
+
+      <div *ngIf="selecTabs === 'beneficiaire' " class="benefice" >
+
+      <ion-item>
+        <ion-label position="stacked">Nom Complet</ion-label>
+        <ion-input formControlName="nomComplet"></ion-input>
+      </ion-item>
+      <ng-container *ngFor="let validation of validation_messages.nomComplet">
+        <div class="error-message errorMessage" color="danger" *ngIf="depotForm.get('nomComplet').hasError((validation.type)) && (depotForm.get('nomComplet').dirty || depotForm.get('nomComplet').touched)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
+
+        <ion-item>
+          <ion-label position="stacked">Telephone</ion-label>
+          <ion-input formControlName="telephoneBeneficiaire"></ion-input>
+        </ion-item>
+      <ng-container *ngFor="let validation of validation_messages.telephoneBeneficiaire">
+        <div class="error-message errorMessage" color="danger" *ngIf="depotForm.get('telephoneBeneficiaire').hasError((validation.type)) && (depotForm.get('telephoneBeneficiaire').dirty || depotForm.get('telephoneBeneficiaire').touched)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
+
+        <!--<ion-item>
+          <ion-label position="stacked">N CNI</ion-label>
+          <ion-input formControlName="cni"></ion-input>
+        </ion-item>
+        <ng-container *ngFor="let validation of validation_messages.cni">
+          <div class="error-message" color="danger" *ngIf="depotForm.get('cni').hasError((validation.type)) && (depotForm.get('cni').dirty || depotForm.get('cni').touched)">
+            {{ validation.message }}
+          </div>
+        </ng-container>-->
+
+      <div class="suivants">
+        <button ion-button round  type="submit" >Envoyer</button>
+      </div>
+  </div>
+    </form>
+
+</ion-content>
